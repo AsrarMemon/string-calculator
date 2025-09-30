@@ -10,6 +10,12 @@ export function add(numbers: string): number {
   }
 
   const nums = numbers.split(delimiter).map(Number);
+  const ngt = nums.filter(n => n < 0);
+
+  if (ngt.length) {
+    throw new Error(`Negative numbers not allowed: ${ngt.join(',')}`);
+  }
+
 
   return nums.reduce((sum, n) => sum + n, 0);
 }
